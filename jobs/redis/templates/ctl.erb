@@ -13,6 +13,7 @@ case $1 in
     cd /var/vcap/packages/redis
 
     /var/vcap/packages/redis/bin/redis-server \
+      --requirepass <%= properties.redis.password %> \
       --dir $DATA_DIR \
       --pidfile $PIDFILE \
       --daemonize yes \

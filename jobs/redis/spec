@@ -6,4 +6,7 @@ templates:
 
 packages: [redis]
 
-properties: {}
+properties:
+  redis.password:
+    description: "Redis requirepass password"
+    default: "default-password"
