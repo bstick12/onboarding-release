@@ -1,0 +1,27 @@
+name: onboarding-redis
+director_uuid: 63ddb6a6-d6fe-40e1-b16b-2ff6b2034c79
+update:
+  canaries: 1
+  canary_watch_time: 30000-1200000
+  max_in_flight: 5
+  serial: false
+  update_watch_time: 5000-1200000
+releases:
+- name: onboarding
+  version: latest
+instance_groups:
+- name: redis-server
+  vm_type: m3.medium
+  stemcell: default
+  instances: 1
+  azs:
+  - z1
+  networks:
+  - name: default
+  jobs:
+  - name: redis
+    persistent_disk: 10G
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: "3421.3"

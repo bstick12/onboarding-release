@@ -1,0 +1,34 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/redis
+LOG_DIR=/var/vcap/sys/log/redis
+PIDFILE=${RUN_DIR}/pid
+DATA_DIR=/var/vcap/store/redis/
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR $DATA_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR $DATA_DIR
+
+    cd /var/vcap/packages/redis
+
+    /var/vcap/packages/redis/bin/redis-server \
+      --dir $DATA_DIR \
+      --pidfile $PIDFILE \
+      --daemonize yes \
+      --logfile $LOG_DIR/redis.log \
+      >>  $LOG_DIR/redis.stdout.log \
+      2>> $LOG_DIR/redis.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac
