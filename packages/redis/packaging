@@ -1,0 +1,6 @@
+set -ex
+
+pushd redis
+  make
+  make install PREFIX="${BOSH_INSTALL_TARGET}"
+popd
