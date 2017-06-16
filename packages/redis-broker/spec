@@ -1,0 +1,8 @@
+---
+name: redis-broker
+
+dependencies:
+- golang
+
+files:
+- github.com/bstick12/onboarding-broker/**/*

@@ -1,3 +1,7 @@
 [submodule "src/redis"]
 	path = src/redis
 	url = git@github.com:antirez/redis.git
+[submodule "src/github.com/bstick12/onboarding-broker"]
+	path = src/github.com/bstick12/onboarding-broker
+	url = git@github.com:bstick12/onboarding-broker
+	branch = glide

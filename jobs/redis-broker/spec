@@ -1,0 +1,13 @@
+---
+name: redis-broker
+
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+- redis-broker
+
+properties:
+  redis.password:
+    description: "Redis Password"
+    default: default-password

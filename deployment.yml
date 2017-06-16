@@ -21,9 +21,12 @@ instance_groups:
   jobs:
   - name: redis
     persistent_disk: 10G
-    properties:
+    properties: &redis_properties
       redis:
         password: "QGh#w%!3FTpT{:]R"
+  - name: redis-broker
+    persistent_disk: 10G
+    properties: *redis_properties
 stemcells:
 - alias: default
   os: ubuntu-trusty
